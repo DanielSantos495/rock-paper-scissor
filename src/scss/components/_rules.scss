@@ -1,0 +1,18 @@
+/*Rules----------Rules----------Rules*/
+
+.rules__button {
+  width: 120px;
+  height: 40px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: var(--Fonts-Primary);
+  color: var(--White);
+  background-color: transparent;
+  border: 1px solid var(--White);
+  letter-spacing: 3px;
+  outline: none;
+  &:active {
+    transform: scale(.9);
+  }
+}

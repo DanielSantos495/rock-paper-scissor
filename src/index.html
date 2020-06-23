@@ -17,25 +17,73 @@
     </ul>
 
     <div class="header__score">
+      <!-- Aqui cargan los puntos,partida ganada son 3 puntos -->
       SCORE
       <span>12</span>
     </div>
   </div>
 
-  <div class="game">
-    <span class="game__paper">
-      <img src="../images/icon-paper.svg" alt="Paper">
-    </span>
-    <span class="game__scissors">
-      <img src="../images/icon-scissors.svg" alt="Scissors">
-    </span>
-    <span class="game__rock">
-      <img src="../images/icon-rock.svg" alt="Rock">
-    </span>
+  <div class="game__table">
+
+    <div class="game">
+      <span class="game__triangle"></span>
+      <div class="click" id="paper">
+        <span class="game__paper" >
+          <span class="game__box-shadow">
+              <img src="../images/icon-paper.svg" alt="Paper">
+          </span>
+        </span>
+      </div>
+      <span class="game__scissors" id="scissors">
+        <span class="game__box-shadow">
+          <img src="../images/icon-scissors.svg" alt="Scissors">
+        </span>
+      </span>
+      <span class="game__rock" id="rock">
+        <span class="game__box-shadow">
+          <img src="../images/icon-rock.svg" alt="Rock">
+        </span>
+      </span>
+    </div>
+
+    <!-- <div class="game-fight">
+      <div class="game-fight__user"> -->
+        <!-- Aquí carga la ficha que eligio el usuario -->
+        <!-- <span class="game__paper">
+          <span class="game__box-shadow">
+              <img src="../images/icon-paper.svg" alt="Paper">
+          </span>
+        </span>
+        <p>YOU PICKED</p>
+      </div>
+      <div class="game-fight__fighter2"> -->
+        <!-- Aquí carga la ficha de la maquina 2 segundos después de la del usuario -->
+
+        <!-- <span class="game__paper">
+          <span class="game__box-shadow">
+              <img src="../images/icon-paper.svg" alt="Paper">
+          </span>
+        </span>
+        <p>THE HOUSE PICKED</p>
+      </div> -->
+
+      <!-- <span class="game-results">
+        <span class="game-results__message">
+
+          YOU LOSE
+        </span>
+        <span class="game-play-again">
+          PLAY AGAIN
+        </span>
+      </span> -->
+    </div>
+
   </div>
 
-  <button class="rules">
-    Rules
+
+
+  <button class="rules__button">
+    RULES
   </button>
   <!-- <div class="rules__modal">
     Rules

@@ -37,11 +37,12 @@
   &::before {
     content: '';
     position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
-    z-index: -1;
+    top: 0; right: 0; bottom: 1px; left: 0;
+    z-index: 1;
     margin: -10px;
     border-radius: 50%;
-    background: $color-border;
+    // background: $color-border;
+    border: 10px solid $color-border;
     box-shadow: 0px 5px 0px $color-shadow-border;
   }
 }

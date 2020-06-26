@@ -1,61 +1,33 @@
+import fightComponent from '../components/fightComponent';
+import choiceGunComponent from '../components/choiceGunComponent';
+import gameResultsComponent from '../components/gameResultsComponent';
+import scoreComponent from '../components/scoreComponent';
+
 const choiceGun = () => {
 
   const rockId = document.getElementById('rock');
   const paperId = document.getElementById('paper');
   const scissorsId = document.getElementById('scissors');
-  // const divFigth = document.getElementById('gameFight');
-  // const positionFightMachine = document.getElementById('game-fight__fighter2-position');
-
+  const headerScoreId = document.getElementById('header__score');
   const gameTable = document.getElementById('game__table');
   const game = document.getElementById('game');
+  const scoreStorage = parseInt(localStorage.getItem('score'));
 
-  const fightComponent = `
+  let score = 0;
 
-      <div class="game-fight__user">
-        <div class="game-fight__user-position" id="game-fight__user">
+  const saveStorage = (storage) => {
+    localStorage.setItem('score', storage);
+  };
+  saveStorage(score);
 
-        </div>
-        <p>YOU PICKED</p>
-      </div>
+  const scoreCount = (() => {
 
-      <div class="game-fight__fighter2">
-        <div class="game-fight__fighter2-position" id="game-fight__fighter2-position">
+    score = scoreStorage + score;
 
-        </div>
-        <p>THE HOUSE PICKED</p>
-      </div>
-
-      <span class="game-results" id="game-results">
-
-      </span>
-
-  `;
+  })()
 
 
-  const choiceGunComponent = (gunName ,imgGun, altName) => `
-
-    <span class="${gunName}">
-      <span class="game__box-shadow">
-          <img src="${imgGun}" alt="${altName}">
-      </span>
-    </span>
-
-  `;
-
-  const gameResultsComponent = (winOrLose) => `
-
-    <span class="game-results__message">
-      ${winOrLose}
-    </span>
-    <span class="game-play-again id="game-play-again">
-        PLAY AGAIN
-    </span>
-`;
-
-  // let rock = 'rock';
-  // let paper = 'paper';
-  // let scissors = 'scissors';
-
+  //Function render components
   const  renderGameComponents = (componentHTML, nameAttribute, valueAttribute, node) => {
 
     const div = document.createElement('div');
@@ -65,8 +37,14 @@ const choiceGun = () => {
 
   }
 
-  const choiceMachineGun = () => Math.floor(Math.random() * 3);
+  onload = () => {
 
+    renderGameComponents(scoreComponent(score), 'id', null, headerScoreId);
+
+  }
+  //Choice random of Machine
+  const choiceMachineGun = () => Math.floor(Math.random() * 3);
+  //Function to logic Game
   function gameFight(gunUser) {
 
     const rock = 0;
@@ -80,10 +58,23 @@ const choiceGun = () => {
     const imgScissors = '../images/icon-scissors.svg';
     const gunMachine = choiceMachineGun();
     const waitOfResponse = 1000;
-    console.log(positionFightMachine);
-    
+    //Page reload for Play Again
+    const playAgain = () => {
+
+      const playAgain = document.getElementById('play-again');
+
+      function reload() {
+
+        location.reload();
+
+      }
+
+      playAgain.addEventListener('click', reload);
+
+    }
 
 
+    //Switch input of users to number for de logic of game
     switch(gunUser) {
 
       case 'rock':
@@ -102,13 +93,13 @@ const choiceGun = () => {
 
     console.log(gunUser, 'User');
     console.log(gunMachine, 'Machine');
-
+    //Validate Guns
     if (gunUser === gunMachine ) {
 
       let gun;
       let gunImg;
       let imgAlt;
-
+      //Switch values for players tie
       switch(gunUser) {
 
         case 0:
@@ -159,8 +150,7 @@ const choiceGun = () => {
       //Machine
       renderGameComponents(choiceGunComponent(gun ,gunImg, imgAlt),'id', null, positionFightMachine);
       renderGameComponents(gameResultsComponent('WE TIE'), 'id', null, gameResults);
-
-
+      playAgain();
       console.log('Empatan');
 
     } else if (gunUser === rock && gunMachine === scissors) {
@@ -171,6 +161,9 @@ const choiceGun = () => {
 
         renderGameComponents(choiceGunComponent('game__scissors' ,imgScissors, 'Scissors'),'id', null, positionFightMachine), waitOfResponse
         renderGameComponents(gameResultsComponent('YOU WIN'), 'id', null, gameResults);
+        score++;
+        saveStorage(score);
+        playAgain();
         console.log('win User');
 
       }, waitOfResponse);
@@ -183,6 +176,9 @@ const choiceGun = () => {
 
         renderGameComponents(choiceGunComponent('game__rock', imgRock, 'Rock'),'id', null, positionFightMachine), waitOfResponse
         renderGameComponents(gameResultsComponent('YOU WIN'), 'id', null, gameResults);
+        score++;
+        saveStorage(score);
+        playAgain();
         console.log('win User');
 
       }, waitOfResponse);
@@ -195,6 +191,9 @@ const choiceGun = () => {
 
         renderGameComponents(choiceGunComponent('game__paper', imgPaper, 'Paper'),'id', null, positionFightMachine), waitOfResponse
         renderGameComponents(gameResultsComponent('YOU WIN'), 'id', null, gameResults);
+        score++;
+        saveStorage(score);
+        playAgain();
         console.log('win User');
 
       }, waitOfResponse);
@@ -207,6 +206,9 @@ const choiceGun = () => {
 
         renderGameComponents(choiceGunComponent('game__rock', imgRock, 'Rock'),'id', null, positionFightMachine), waitOfResponse
         renderGameComponents(gameResultsComponent('YOU LOSE'), 'id', null, gameResults);
+        score--;
+        saveStorage(score);
+        playAgain();
         console.log('win Machine, user Lose');
 
       }, waitOfResponse);
@@ -219,6 +221,9 @@ const choiceGun = () => {
 
         renderGameComponents(choiceGunComponent('game__paper', imgPaper, 'Paper'),'id', null, positionFightMachine), waitOfResponse
         renderGameComponents(gameResultsComponent('YOU LOSE'), 'id', null, gameResults);
+        score--;
+        saveStorage(score);
+        playAgain();
         console.log('win Machine, user Lose');
 
       }, waitOfResponse);
@@ -232,44 +237,33 @@ const choiceGun = () => {
 
         renderGameComponents(choiceGunComponent('game__scissors', imgScissors, 'Scissors'),'id', null, positionFightMachine), waitOfResponse
         renderGameComponents(gameResultsComponent('YOU LOSE'), 'id', null, gameResults);
+        score--;
+        saveStorage(score);
+        playAgain();
         console.log('win Machine, user Lose');
 
       }, waitOfResponse);
 
     }
 
-    // const playAgain = () => {
-  
-      const playAgain = document.getElementById('game-play-again');
-  
-      function reload() {
-        reload();
-      }
-      playAgain.addEventListener('click', reload);
-      console.log(playAgain);
-    // }
-    // playAgain();
+    saveStorage(score);
+    console.log('puntos:',score);
 
   }
-
-  function choiceGun(event) {
+  //Function Start Game
+  function startGame(event) {
 
     const gun = event.target.id;
     console.log(gun);
     game.remove();
     renderGameComponents(fightComponent, 'class', 'game-fight', gameTable);
-
     gameFight(gun);
-
 
   }
 
-
-
-  rockId.addEventListener('click', choiceGun);
-  paperId.addEventListener('click', choiceGun);
-  scissorsId.addEventListener('click', choiceGun);
-
+  rockId.addEventListener('click', startGame);
+  paperId.addEventListener('click', startGame);
+  scissorsId.addEventListener('click', startGame);
 
 }
 

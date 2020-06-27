@@ -16,6 +16,22 @@
   justify-self: center;
   align-self: center;
   cursor: pointer;
+  @include media(cellphone) {
+    width: 120px;
+    height: 120px;
+  }
+  @include media(tablet) {
+    width: 140px;
+    height: 140px;
+  }
+  @include media(tablet-small) {
+    width: 140px;
+    height: 140px;
+  }
+  @include media(laptop) {
+    width: 180px;
+    height: 180px;
+  }
   &:active {
     transform: scale(.9);
   }
@@ -29,10 +45,42 @@
     box-sizing: border-box;
     border-radius: 50%;
     box-shadow: 0px -4px 0px hsl(0, 0%, 81%);
+    @include media(cellphone) {
+      height: 75%;
+      box-shadow: 0px -7px 0px hsl(0, 0%, 81%);
+    }
+    @include media(tablet-small) {
+      height: 76%;
+      box-shadow: 0px -9px 0px hsl(0, 0%, 81%);
+    }
+    @include media(tablet) {
+      height: 76%;
+      box-shadow: 0px -9px 0px hsl(0, 0%, 81%);
+    }
+    @include media(laptop) {
+      height: 76%;
+      box-shadow: 0px -10px 0px hsl(0, 0%, 81%);
+    }
   }
   img {
     width: 40px;
     height: 40px;
+    @include media(cellphone) {
+      width: 60px;
+      height: 60px;
+    }
+    @include media(tablet-small) {
+      width: 60px;
+      height: 60px;
+    }
+    @include media(tablet) {
+      width: 60px;
+      height: 60px;
+    }
+    @include media(laptop) {
+      width: 80px;
+      height: 80px;
+    }
   }
   &::before {
     content: '';
@@ -44,6 +92,18 @@
     // background: $color-border;
     border: 10px solid $color-border;
     box-shadow: 0px 5px 0px $color-shadow-border;
+    @include media(cellphone) {
+      border: 15px solid $color-border;
+    }
+    @include media(tablet-small) {
+      border: 15px solid $color-border;
+    }
+    @include media(tablet) {
+      border: 15px solid $color-border;
+    }
+    @include media(laptop) {
+      border: 20px solid $color-border;
+    }
   }
 }
 
@@ -54,6 +114,18 @@
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: $repeat;
   grid-template-areas: $grid-areas;
+  @include media(cellphone) {
+    width: 70%;
+  }
+  @include media(tablet-small) {
+    width: 70%;
+  }
+  @include media(tablet) {
+    width: 60%;
+  }
+  @include media(laptop) {
+    width: 60%;
+  }
 }
 
 @mixin triangle($width) {
@@ -69,5 +141,31 @@
   }
   @if $display == flex {
     display: flex;
+  }
+}
+
+
+/*Media Queries*/
+@mixin media($breakpoint) {
+
+  @if $breakpoint == cellphone {
+    @media screen and (min-width: 480px) and (max-width: 599px) {
+      @content;
+    }
+  }
+  @else if $breakpoint == tablet-small {
+    @media screen and (min-width: 600px) and (max-width: 799px) {
+      @content;
+    }
+  }
+  @else if $breakpoint == tablet {
+    @media screen and (min-width: 800px) and (max-width: 1023px) {
+      @content;
+    }
+  }
+  @else if $breakpoint == laptop {
+    @media screen and (min-width: 1024px){
+      @content;
+    }
   }
 }

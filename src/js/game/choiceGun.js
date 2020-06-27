@@ -14,7 +14,7 @@ const choiceGun = () => {
   const scoreStorage = parseInt(localStorage.getItem('score'));
 
   let score = 0;
-
+  //Guardamos el score en el storage
   const saveStorage = (storage) => {
     localStorage.setItem('score', storage);
   };
@@ -149,7 +149,7 @@ const choiceGun = () => {
       renderGameComponents(choiceGunComponent(gun ,gunImg, imgAlt),'id', null, positionFightUser);
       //Machine
       renderGameComponents(choiceGunComponent(gun ,gunImg, imgAlt),'id', null, positionFightMachine);
-      renderGameComponents(gameResultsComponent('WE TIE'), 'id', null, gameResults);
+      renderGameComponents(gameResultsComponent('YOU TIE'), 'id', null, gameResults);
       playAgain();
       console.log('Empatan');
 

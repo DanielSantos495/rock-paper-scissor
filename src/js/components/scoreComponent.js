@@ -1,4 +1,4 @@
-const scoreComponent = (score) => `
+const scoreComponent = (score = 0) => `
 
   <span>${score}</span>
 

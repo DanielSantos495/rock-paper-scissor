@@ -13,7 +13,9 @@ const choiceGun = () => {
   const gameTable = document.getElementById('game__table');
   const game = document.getElementById('game');
   const restartId = document.getElementById('header__restart');
-  const scoreStorage = parseInt(localStorage.getItem('score'));
+  const scoreStorage = () => localStorage.getItem('score')
+                                ? parseInt(localStorage.getItem('score'))
+                                : 0;
 
   let score = 0;
   //Guardamos el score en el storage
@@ -23,8 +25,8 @@ const choiceGun = () => {
   saveStorage(score);
 
   const scoreCount = (() => {
-
-    score = scoreStorage + score;
+    // No nos da el score que debe ser al iniciar
+    score = scoreStorage() + score;
 
   })()
 
@@ -41,6 +43,7 @@ const choiceGun = () => {
 
   onload = () => {
 
+    // score = 0;
     renderGameComponents(scoreComponent(score), 'id', null, headerScoreId);
     renderGameComponents(restartComponent(), 'id', 'restart', restartId);
 

@@ -59,9 +59,9 @@ const choiceGun = () => {
     const positionFightMachine = document.getElementById('game-fight__fighter2-position');
     const positionFightUser = document.getElementById('game-fight__user');
     const gameResults = document.getElementById('game-results');
-    const imgRock = '../images/icon-rock.svg';
-    const imgPaper = '../images/icon-paper.svg';
-    const imgScissors = '../images/icon-scissors.svg';
+    const imgRock = 'https://i.imgur.com/qRF9592.png';
+    const imgPaper = 'https://i.imgur.com/gTRA5qF.png';
+    const imgScissors = 'https://i.imgur.com/smN2bE5.png';
     const gunMachine = choiceMachineGun();
     const waitOfResponse = 1000;
     //Page reload for Play Again

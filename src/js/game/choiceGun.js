@@ -2,6 +2,7 @@ import fightComponent from '../components/fightComponent';
 import choiceGunComponent from '../components/choiceGunComponent';
 import gameResultsComponent from '../components/gameResultsComponent';
 import scoreComponent from '../components/scoreComponent';
+import restartComponent from '../components/restartComponent';
 
 const choiceGun = () => {
 
@@ -11,6 +12,7 @@ const choiceGun = () => {
   const headerScoreId = document.getElementById('header__score');
   const gameTable = document.getElementById('game__table');
   const game = document.getElementById('game');
+  const restartId = document.getElementById('header__restart');
   const scoreStorage = parseInt(localStorage.getItem('score'));
 
   let score = 0;
@@ -40,8 +42,12 @@ const choiceGun = () => {
   onload = () => {
 
     renderGameComponents(scoreComponent(score), 'id', null, headerScoreId);
+    renderGameComponents(restartComponent(), 'id', 'restart', restartId);
 
   }
+  //Function restart the game
+  restartId.addEventListener('click', () => location.reload() );
+
   //Choice random of Machine
   const choiceMachineGun = () => Math.floor(Math.random() * 3);
   //Function to logic Game
@@ -252,10 +258,14 @@ const choiceGun = () => {
   }
   //Function Start Game
   function startGame(event) {
+    //Restart the game id
+    const restart = document.getElementById('restart');
 
     const gun = event.target.id;
     console.log(gun);
     game.remove();
+    //Remove restart in game fight
+    restart.remove();
     renderGameComponents(fightComponent, 'class', 'game-fight', gameTable);
     gameFight(gun);
 

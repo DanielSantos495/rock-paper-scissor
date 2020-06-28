@@ -16,3 +16,50 @@
     transform: scale(.9);
   }
 }
+
+
+.rules__overlay {
+  display: none; //flex
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--Overlay);
+  z-index: 5;
+}
+.rules__modal {
+  width: 95%;
+  height: 95%;
+  // margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: var(--White);
+  @include media(tablet) {
+    width: 50%;
+    height: 70%;
+  }
+  @include media(laptop) {
+    width: 40%;
+    height: 70%;
+  }
+  p {
+    font-size: 50px;
+    color: var(--Dark-Text);
+  }
+  span {
+    cursor: pointer;
+    &:active {
+      transform: scale(.9);
+    }
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}

@@ -128,6 +128,26 @@
   }
 }
 
+@mixin letter($height, $font-size) {
+  width: 40px;
+  height: $height;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: var(--Score-Text);
+  background-color: var(--White);
+  border-radius: 5px;
+  span {
+    // margin-top: 5px;
+    font-size: $font-size;
+    font-weight: var(--Fonts-Weight-Secundary);
+    color: var(--Dark-Text);
+  }
+}
+
 @mixin triangle($width) {
   height: 10px;
   width: $width;

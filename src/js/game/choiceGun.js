@@ -13,23 +13,20 @@ const choiceGun = () => {
   const gameTable = document.getElementById('game__table');
   const game = document.getElementById('game');
   const restartId = document.getElementById('header__restart');
-  const scoreStorage = () => localStorage.getItem('score')
-                                ? parseInt(localStorage.getItem('score'))
-                                : 0;
+  const scoreStorage = localStorage.getItem('score') ? parseInt(localStorage.getItem('score')) : 0;
 
   let score = 0;
   //Guardamos el score en el storage
   const saveStorage = (storage) => {
     localStorage.setItem('score', storage);
   };
-  saveStorage(score);
 
-  const scoreCount = (() => {
-    // No nos da el score que debe ser al iniciar
-    score = scoreStorage() + score;
+  //Score count
+  const scoreCount = () => {
 
-  })()
+    score = scoreStorage + score;
 
+  };
 
   //Function render components
   const  renderGameComponents = (componentHTML, nameAttribute, valueAttribute, node) => {
@@ -43,16 +40,25 @@ const choiceGun = () => {
 
   onload = () => {
 
-    // score = 0;
+    //call  score count
+    scoreCount();
     renderGameComponents(scoreComponent(score), 'id', null, headerScoreId);
     renderGameComponents(restartComponent(), 'id', 'restart', restartId);
 
   }
-  //Function restart the game
-  restartId.addEventListener('click', () => location.reload() );
+  //Function restart game
+  function restartGame() {
+
+    location.reload();
+    localStorage.clear();
+
+  }
+  //Event restart game
+  restartId.addEventListener('click', restartGame);
 
   //Choice random of Machine
   const choiceMachineGun = () => Math.floor(Math.random() * 3);
+
   //Function to logic Game
   function gameFight(gunUser) {
 
@@ -170,6 +176,7 @@ const choiceGun = () => {
 
         renderGameComponents(choiceGunComponent('game__scissors' ,imgScissors, 'Scissors'),'id', null, positionFightMachine), waitOfResponse
         renderGameComponents(gameResultsComponent('YOU WIN'), 'id', null, gameResults);
+
         score++;
         saveStorage(score);
         playAgain();
@@ -185,6 +192,7 @@ const choiceGun = () => {
 
         renderGameComponents(choiceGunComponent('game__rock', imgRock, 'Rock'),'id', null, positionFightMachine), waitOfResponse
         renderGameComponents(gameResultsComponent('YOU WIN'), 'id', null, gameResults);
+
         score++;
         saveStorage(score);
         playAgain();
@@ -200,6 +208,7 @@ const choiceGun = () => {
 
         renderGameComponents(choiceGunComponent('game__paper', imgPaper, 'Paper'),'id', null, positionFightMachine), waitOfResponse
         renderGameComponents(gameResultsComponent('YOU WIN'), 'id', null, gameResults);
+
         score++;
         saveStorage(score);
         playAgain();
@@ -215,6 +224,7 @@ const choiceGun = () => {
 
         renderGameComponents(choiceGunComponent('game__rock', imgRock, 'Rock'),'id', null, positionFightMachine), waitOfResponse
         renderGameComponents(gameResultsComponent('YOU LOSE'), 'id', null, gameResults);
+
         score--;
         saveStorage(score);
         playAgain();
@@ -230,6 +240,7 @@ const choiceGun = () => {
 
         renderGameComponents(choiceGunComponent('game__paper', imgPaper, 'Paper'),'id', null, positionFightMachine), waitOfResponse
         renderGameComponents(gameResultsComponent('YOU LOSE'), 'id', null, gameResults);
+
         score--;
         saveStorage(score);
         playAgain();
@@ -246,6 +257,7 @@ const choiceGun = () => {
 
         renderGameComponents(choiceGunComponent('game__scissors', imgScissors, 'Scissors'),'id', null, positionFightMachine), waitOfResponse
         renderGameComponents(gameResultsComponent('YOU LOSE'), 'id', null, gameResults);
+
         score--;
         saveStorage(score);
         playAgain();
@@ -257,6 +269,7 @@ const choiceGun = () => {
 
     saveStorage(score);
     console.log('puntos:',score);
+
 
   }
   //Function Start Game

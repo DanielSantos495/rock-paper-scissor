@@ -3,6 +3,8 @@
 }
 .is-active-f {
   @include active(flex);
+  opacity: 1;
+  visibility: visible;
 }
 .is-active-g {
   @include active(grid);

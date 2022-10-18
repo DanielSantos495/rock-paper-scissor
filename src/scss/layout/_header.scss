@@ -1,0 +1,22 @@
+/*Header----------Header---------Header*/
+
+.header {
+  width: 80%;
+  margin-top: 30px;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid var(--Header-Outline);
+  border-radius: 5px;
+}
+.header__score {
+  @include letter(auto, 30px);
+}
+.header__restart {
+  cursor: pointer;
+  @include letter(10px , 16px);
+  &:active {
+    transform: scale(.9);
+  }
+}

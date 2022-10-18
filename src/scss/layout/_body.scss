@@ -1,0 +1,13 @@
+/*Body----------Body---------Body*/
+
+.body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--Fonts-Primary);
+  color: var(--White);
+  background: var(--Radial-Gradient) ;
+}

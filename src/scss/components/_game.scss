@@ -1,0 +1,36 @@
+/*Game Table----------Game Table----------Game Table*/
+
+.game {
+  @include elementFight("paper scissors" "rock rock", repeat(2, 150px));
+}
+.game__paper {
+  @include elementForGame(paper, var(--Paper-Color), var(--Color-Shadow-Paper));
+
+}
+.game__scissors {
+  @include elementForGame(scissors, var(--Scissors-Color), var(--Color-Shadow-Scissors));
+}
+.game__rock {
+  @include elementForGame(rock, var(--Rock-Color), var(--Color-Shadow-Rock));
+  @include media(laptop) {
+    align-self: flex-start;
+  }
+}
+// .game__triangle {
+//   bottom: 350px;
+//   // right: 100px;
+//   right: 27%;
+//   z-index: -1;
+//   @include triangle(180px);
+//   &::after {
+//     content: '';
+//     transform: rotate(58deg);
+//
+//   }
+//   &::before {
+//     content: '';
+//     transform: rotate(-58deg);
+//     transform-origin: 100% 0;
+//     @include triangle(170px);
+//   }
+// }

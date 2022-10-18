@@ -1,0 +1,38 @@
+/*Variables----------Variables----------Variables*/
+
+
+:root {
+  /*Colors---------Colors*/
+
+  /*Primary*/
+  --Scissors-Color: hsl(40, 84%, 53%);
+  --Paper-Color: hsl(230, 89%, 65%);
+  --Rock-Color: hsl(349, 70%, 56%);
+
+
+  /*Neutral*/
+  --Dark-Text: hsl(229, 25%, 31%);
+  --Score-Text: hsl(229, 64%, 46%);
+  --Header-Outline: hsl(217, 16%, 45%);
+  --White: hsl(255, 100%, 100%);
+  --Dark: hsl(214, 47%, 23%);
+
+  /*Shadow*/
+  --Color-Shadow-Scissors: hsl(39, 90%, 32%);
+  --Color-Shadow-Paper: hsl(230, 66%, 35%);
+  --Color-Shadow-Rock: hsl(349, 72%, 35%);
+
+
+  /*Background*/
+  --Radial-Gradient: linear-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+  --Overlay: hsla(238, 48%, 15%, 0.5);
+
+  /*Fonts----------Fonts*/
+
+  /*Fonts*/
+  --Fonts-Primary: 'Barlow Semi Condensed', Helvetica;
+
+  /*Weights*/
+  --Fonts-Weight-Primary: 600;
+  --Fonts-Weight-Secundary: 700;
+}

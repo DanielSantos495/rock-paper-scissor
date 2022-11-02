@@ -1,5 +1,3 @@
-//logica
-
 import { texts } from './texts'
 
 /**
